@@ -18,7 +18,7 @@ import org.hibernate.id.IdentifierGenerationException;
 import fr.aoufi.entity.Auteur;
 import fr.aoufi.entity.Document;
 import fr.aoufi.entity.Localisation;
-import fr.aoufi.entity.ThemeDoc;
+import fr.aoufi.entity.Theme;
 import fr.aoufi.ressources.Param;
 import fr.aoufi.userException.AuteurAffecteException;
 import fr.aoufi.userException.DiversException;
@@ -106,10 +106,10 @@ public class DaoGestion {
 				//  ajoute le theme à la fin de la collection et dans la boucle, il est re traité à la fin
 				// on travaille donc sur la position des objets dans la liste
 				// de plus, avec un iterator sur l'ArrayList on a ConcurrentModificationException au moment de la modif
-				ArrayList<ThemeDoc> listeThemes = (ArrayList<ThemeDoc>) document.getThemes();
+				ArrayList<Theme> listeThemes = (ArrayList<Theme>) document.getThemes();
 				for (int i = 0; i < listeThemes.size(); i++) {
-					ThemeDoc theme = listeThemes.get(i);
-					ThemeDoc themex = em.find(ThemeDoc.class, theme.getId());	// on recupere le proxy correspondant
+					Theme theme = listeThemes.get(i);
+					Theme themex = em.find(Theme.class, theme.getId());	// on recupere le proxy correspondant
 					// si trouve on remplace à la meme position l'instance de theme par le proxy
 					// sinon on laisse la valeur presente, elle sera cree (CascadeType.Persist)
 					if (themex != null)  listeThemes.set(i,themex);				
@@ -582,7 +582,7 @@ public class DaoGestion {
 	 * 			GESTION THEME
 	 * ========================================== */
 
-	public ThemeDoc add(ThemeDoc theme) throws DoublonException, IdException, LocalisationAffecteeException {
+	public Theme add(Theme theme) throws DoublonException, IdException, LocalisationAffecteeException {
 		System.out.println("*** DaoGestion - DEBUT - add(theme) : theme : " + theme);
 
 		if (theme != null) {
@@ -611,7 +611,7 @@ public class DaoGestion {
 	 * RG : si le theme ne possede pas d'id, theme null
 	 *      sinon aucune verification sur le theme      
 	 */
-	public ThemeDoc update (ThemeDoc theme) {
+	public Theme update (Theme theme) {
 		if (theme != null) {
 			if (theme.getId() == null || theme.getId().isEmpty()) theme = null;
 			else theme = em.merge(theme);
@@ -620,7 +620,7 @@ public class DaoGestion {
 	}
 
 	// supprime le theme et ses associations aux documents
-	public void remove(ThemeDoc theme) throws InexistantException   {
+	public void remove(Theme theme) throws InexistantException   {
 
 		if (theme == null) throw new InexistantException();
 
@@ -635,7 +635,7 @@ public class DaoGestion {
 
 	// supprime le theme et ses associations aux documents
 	public void removeThemeById(String id) throws InexistantException   {
-		ThemeDoc theme = getTheme(id);
+		Theme theme = getTheme(id);
 		remove(theme);
 	}
 
@@ -654,10 +654,10 @@ public class DaoGestion {
 		em.flush();
 	}
 
-	public ThemeDoc getTheme(String id) throws InexistantException {
-		ThemeDoc theme = null;
+	public Theme getTheme(String id) throws InexistantException {
+		Theme theme = null;
 		if (id != null) {
-			theme = em.find(ThemeDoc.class, id);
+			theme = em.find(Theme.class, id);
 			if (theme == null) throw new InexistantException();
 		}
 		return theme;

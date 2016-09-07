@@ -18,7 +18,7 @@ import fr.aoufi.ressources.Param;
 
 @Entity 
 @Table(name=Param.TABLE_THEME)
-public class ThemeDoc implements Serializable {
+public class Theme implements Serializable {
 
 	@Version
 	private static final long serialVersionUID = 1L;
@@ -60,9 +60,9 @@ public class ThemeDoc implements Serializable {
 	//	@Transient
 	//	private String pasPersist;
 
-	public ThemeDoc() { }
+	public Theme() { }
 
-	public ThemeDoc(String id, String nom, String description) {
+	public Theme(String id, String nom, String description) {
 		this.id = id;
 		this.nom = nom;
 		this.description = description;
@@ -127,9 +127,9 @@ public class ThemeDoc implements Serializable {
 	}
 
 	// Voir classe Document pour les explications
-	public ThemeDoc getDto () {
+	public Theme getDto () {
 
-		ThemeDoc themeDto = new ThemeDoc(this.getId(), this.getNom(), this.getDescription());
+		Theme themeDto = new Theme(this.getId(), this.getNom(), this.getDescription());
 
 		// on ajoute les documents du persistantBag dans le nouveau themeDto mais on ne charge pas
 		// les themes des documents 

@@ -10,7 +10,7 @@ import fr.aoufi.dao.DaoFacade;
 import fr.aoufi.entity.Auteur;
 import fr.aoufi.entity.Document;
 import fr.aoufi.entity.Localisation;
-import fr.aoufi.entity.ThemeDoc;
+import fr.aoufi.entity.Theme;
 
 @Singleton
 @LocalBean
@@ -43,19 +43,19 @@ public class ServiceListe {
 		return daoFacade.getAllAuteurByNom();
 	}
 	
-	public List<Document> getAllDocumentByTheme(ThemeDoc theme) {
+	public List<Document> getAllDocumentByTheme(Theme theme) {
 		return daoFacade.getAllDocumentByTheme(theme);
 	}
 	
-	public List<ThemeDoc> getAllThemeById() {
+	public List<Theme> getAllThemeById() {
 		return daoFacade.getAllThemeById();
 	}
 	
-	public List<ThemeDoc> getAllThemeByNom() {
+	public List<Theme> getAllThemeByNom() {
 		return daoFacade.getAllThemeByNom();
 	}
 	
-	public List<ThemeDoc> getAllThemeByDoc(Document document) {
+	public List<Theme> getAllThemeByDoc(Document document) {
 		return daoFacade.getAllThemeByDoc(document);
 	}
 

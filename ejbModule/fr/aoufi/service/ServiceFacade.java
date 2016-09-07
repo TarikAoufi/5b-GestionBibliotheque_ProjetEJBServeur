@@ -11,7 +11,7 @@ import fr.aoufi.clientServer.UserException;
 import fr.aoufi.entity.Auteur;
 import fr.aoufi.entity.Document;
 import fr.aoufi.entity.Localisation;
-import fr.aoufi.entity.ThemeDoc;
+import fr.aoufi.entity.Theme;
 
 @Stateless
 @Remote(IServiceFacade.class)
@@ -205,7 +205,7 @@ public class ServiceFacade implements IServiceFacade {
 	}
 	
 	@Override
-	public List<Document> getAllDocumentByTheme(ThemeDoc theme) {
+	public List<Document> getAllDocumentByTheme(Theme theme) {
 		return serviceListe.getAllDocumentByTheme(theme);
 	}
 	
@@ -231,17 +231,17 @@ public class ServiceFacade implements IServiceFacade {
 	}
 
 	@Override
-	public ThemeDoc add(ThemeDoc theme) throws UserException {
+	public Theme add(Theme theme) throws UserException {
 		return serviceGestion.add(theme);
 	}
 
 	@Override
-	public ThemeDoc update(ThemeDoc theme) {
+	public Theme update(Theme theme) {
 		return serviceGestion.update(theme);
 	}
 
 	@Override
-	public void remove(ThemeDoc theme) throws UserException {
+	public void remove(Theme theme) throws UserException {
 		serviceGestion.remove(theme);		
 	}
 
@@ -260,22 +260,22 @@ public class ServiceFacade implements IServiceFacade {
 		serviceGestion.removeThemeNative();	}
 
 	@Override
-	public ThemeDoc getTheme(String id) throws UserException {
+	public Theme getTheme(String id) throws UserException {
 		return serviceGestion.getTheme(id);
 	}
 
 	@Override
-	public List<ThemeDoc> getAllThemeById() {
+	public List<Theme> getAllThemeById() {
 		return serviceListe.getAllThemeById();
 	}
 
 	@Override
-	public List<ThemeDoc> getAllThemeByNom() {
+	public List<Theme> getAllThemeByNom() {
 		return serviceListe.getAllThemeByNom();
 	}
 
 	@Override
-	public List<ThemeDoc> getAllThemeByDoc(Document document) {
+	public List<Theme> getAllThemeByDoc(Document document) {
 		return serviceListe.getAllThemeByDoc(document);
 	}
 

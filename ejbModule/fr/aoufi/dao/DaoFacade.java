@@ -10,7 +10,7 @@ import javax.ejb.Singleton;
 import fr.aoufi.entity.Auteur;
 import fr.aoufi.entity.Document;
 import fr.aoufi.entity.Localisation;
-import fr.aoufi.entity.ThemeDoc;
+import fr.aoufi.entity.Theme;
 import fr.aoufi.userException.AuteurAffecteException;
 import fr.aoufi.userException.DoublonException;
 import fr.aoufi.userException.IdException;
@@ -171,7 +171,7 @@ public class DaoFacade {
 		return auteur;
 	}
 
-	public ThemeDoc add(ThemeDoc theme) throws DoublonException, IdException, LocalisationAffecteeException {
+	public Theme add(Theme theme) throws DoublonException, IdException, LocalisationAffecteeException {
 		if (theme != null) {
 			theme = daoGestion.add(theme);
 			theme = theme.getDto();
@@ -179,7 +179,7 @@ public class DaoFacade {
 		return theme;
 	}
 
-	public ThemeDoc update(ThemeDoc theme) {
+	public Theme update(Theme theme) {
 		if (theme != null) {
 			theme = daoGestion.update(theme);
 			theme = theme.getDto();
@@ -187,7 +187,7 @@ public class DaoFacade {
 		return theme;
 	}
 
-	public void remove(ThemeDoc theme) throws InexistantException {
+	public void remove(Theme theme) throws InexistantException {
 		daoGestion.remove(theme);
 	}
 
@@ -203,8 +203,8 @@ public class DaoFacade {
 		daoGestion.removeThemeNative();
 	}
 
-	public ThemeDoc getTheme(String id) throws InexistantException {
-		ThemeDoc theme = daoGestion.getTheme(id);
+	public Theme getTheme(String id) throws InexistantException {
+		Theme theme = daoGestion.getTheme(id);
 		if (theme != null) theme = theme.getDto();
 		return theme;
 	}
@@ -249,7 +249,7 @@ public class DaoFacade {
 		return liste;
 	}
 
-	public List<Document> getAllDocumentByTheme(ThemeDoc theme) {
+	public List<Document> getAllDocumentByTheme(Theme theme) {
 		ArrayList<Document> liste = new ArrayList<Document>();
 		if (theme != null) {
 			for (Document d : daoListe.getAllDocumentByTheme(theme)) {   
@@ -259,26 +259,26 @@ public class DaoFacade {
 		return liste;
 	}
 
-	public List<ThemeDoc> getAllThemeById() {
-		ArrayList<ThemeDoc> liste = new ArrayList<ThemeDoc>();
-		for (ThemeDoc t : daoListe.getAllThemeById()) {   
+	public List<Theme> getAllThemeById() {
+		ArrayList<Theme> liste = new ArrayList<Theme>();
+		for (Theme t : daoListe.getAllThemeById()) {   
 			liste.add(t.getDto());
 		}
 		return liste;
 	}
 
-	public List<ThemeDoc> getAllThemeByNom() {
-		ArrayList<ThemeDoc> liste = new ArrayList<ThemeDoc>();
-		for (ThemeDoc t : daoListe.getAllThemeById()) {   
+	public List<Theme> getAllThemeByNom() {
+		ArrayList<Theme> liste = new ArrayList<Theme>();
+		for (Theme t : daoListe.getAllThemeById()) {   
 			liste.add(t.getDto());
 		}
 		return liste;
 	}
 
-	public List<ThemeDoc> getAllThemeByDoc(Document document) {
-		ArrayList<ThemeDoc> liste = new ArrayList<ThemeDoc>();
+	public List<Theme> getAllThemeByDoc(Document document) {
+		ArrayList<Theme> liste = new ArrayList<Theme>();
 		if (document != null) {
-			for (ThemeDoc t : daoListe.getAllThemeById()) {   
+			for (Theme t : daoListe.getAllThemeById()) {   
 				liste.add(t.getDto());
 			}
 		}		

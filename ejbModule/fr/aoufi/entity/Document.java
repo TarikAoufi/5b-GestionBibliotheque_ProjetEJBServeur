@@ -72,7 +72,7 @@ public class Document implements Serializable {
 	@JoinTable(name=Param.TABLE_DOC_THEME,
 			   joinColumns = @JoinColumn(name="idDocument"),
 			   inverseJoinColumns = @JoinColumn(name="idTheme"))
-	private List<ThemeDoc> themes = new ArrayList<ThemeDoc>();
+	private List<Theme> themes = new ArrayList<Theme>();
 
 	public Document() {
 		super();
@@ -142,17 +142,17 @@ public class Document implements Serializable {
 		this.auteur = auteur;
 	}
 
-	public List<ThemeDoc> getThemes() {
+	public List<Theme> getThemes() {
 		return themes;
 	}
 
-	public void setThemes(List<ThemeDoc> themes) {
+	public void setThemes(List<Theme> themes) {
 		this.themes = themes;
 	}
 
-	public void addTheme(ThemeDoc theme) {
+	public void addTheme(Theme theme) {
 		if (theme != null) {
-			if (themes == null) themes = new ArrayList<ThemeDoc>();
+			if (themes == null) themes = new ArrayList<Theme>();
 			if (!themes.contains(theme)) {
 				themes.add(theme);
 				theme.add(this);
@@ -167,7 +167,7 @@ public class Document implements Serializable {
 				+ ", " + localisation + ", " + auteur + "]";
 		if (themes   != null) {
 			chaine += ", Theme [";
-			for (ThemeDoc theme : themes) {
+			for (Theme theme : themes) {
 				chaine = chaine + theme.getId() + " " + theme.getNom() + " " + theme.getDescription() + "," ;
 			}
 		}
@@ -201,9 +201,9 @@ public class Document implements Serializable {
 
 		// on ajoute les themes du persistantBag dans le nouveau docDto
 		if (this.getThemes() != null) {
-			ArrayList<ThemeDoc> listeDto = new ArrayList<ThemeDoc>();
-			for (ThemeDoc theme : this.getThemes()) {
-				ThemeDoc themeDto = theme.getDto();
+			ArrayList<Theme> listeDto = new ArrayList<Theme>();
+			for (Theme theme : this.getThemes()) {
+				Theme themeDto = theme.getDto();
 				// Theme themeDto = new Theme(theme.getId(), theme.getNom(), theme.getDescription());
 				// themeDto.setDocuments(theme.getDocuments()); => persistentBag (la liste des documents dans le theme)
 				listeDto.add(themeDto);
@@ -223,7 +223,7 @@ public class Document implements Serializable {
 		if (this.getAuteur() != null) docDto.setAuteur(this.getAuteur().getDto());
 		
 		// on met la liste des themes a vide pour éviter de tourner en rond
-		docDto.setThemes(new ArrayList<ThemeDoc>());
+		docDto.setThemes(new ArrayList<Theme>());
 		return docDto;
 	}
 

@@ -12,7 +12,7 @@ import javax.persistence.Query;
 import fr.aoufi.entity.Auteur;
 import fr.aoufi.entity.Document;
 import fr.aoufi.entity.Localisation;
-import fr.aoufi.entity.ThemeDoc;
+import fr.aoufi.entity.Theme;
 import fr.aoufi.ressources.Param;
 
 /**
@@ -44,7 +44,7 @@ public class DaoListe {
 		return recupObjet(query, Document.class);
 	}
 	
-	public List<Document> getAllDocumentByTheme(ThemeDoc theme) {
+	public List<Document> getAllDocumentByTheme(Theme theme) {
 		List<Document> liste = null;
 		if (theme != null) {
 			Query query = em.createQuery(ReqHQL.ALL_DOCUMENT_BY_THEME).setParameter(1,theme.getId());
@@ -84,24 +84,24 @@ public class DaoListe {
 	/* ==========================================  
 	 * 			GESTION THEME
 	 * ========================================== */	
-	public List<ThemeDoc> getAllThemeById() {
+	public List<Theme> getAllThemeById() {
 		Query query = em.createQuery(ReqHQL.ALL_THEME_BY_ID);
-		return recupObjet(query, ThemeDoc.class);
+		return recupObjet(query, Theme.class);
 	}
 
-	public List<ThemeDoc> getAllThemeByNom() {
+	public List<Theme> getAllThemeByNom() {
 		Query query = em.createQuery(ReqHQL.ALL_THEME_BY_NOM);
-		return recupObjet(query, ThemeDoc.class);
+		return recupObjet(query, Theme.class);
 	}
 
-	public List<ThemeDoc> getAllThemeByDoc(Document document) {
-		List<ThemeDoc> liste = null;
+	public List<Theme> getAllThemeByDoc(Document document) {
+		List<Theme> liste = null;
 		if (document != null) {
 			Query query = em.createQuery(ReqHQL.ALL_THEME_BY_DOC);
 			query.setParameter(1,document.getCote());
-			liste = recupObjet(query, ThemeDoc.class);
+			liste = recupObjet(query, Theme.class);
 		} else {
-			liste = new ArrayList<ThemeDoc>();
+			liste = new ArrayList<Theme>();
 		}
 		return liste;
 	}

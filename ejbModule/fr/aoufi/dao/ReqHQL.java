@@ -19,11 +19,11 @@ public class ReqHQL {
 	
 	// Attention aux jointures externes si liste document est nulle
 	protected static final String ALL_THEME_BY_ID  			= 
-			"select distinct(t) from ThemeDoc as t left outer join t.documents as doc left outer join doc.auteur order by t.id asc";
+			"select distinct(t) from Theme as t left outer join t.documents as doc left outer join doc.auteur order by t.id asc";
 	protected static final String ALL_THEME_BY_NOM 			= 
-			"select distinct(t) from ThemeDoc as t left outer join t.documents as doc left outer join doc.auteur order by t.nom asc";
+			"select distinct(t) from Theme as t left outer join t.documents as doc left outer join doc.auteur order by t.nom asc";
 	protected static final String ALL_THEME_BY_DOC 			= 
-			"select distinct(t) from ThemeDoc as t join t.documents as doc where doc.cote = ? order by t.id asc";
+			"select distinct(t) from Theme as t join t.documents as doc where doc.cote = ? order by t.id asc";
 
 	protected static final String GET_DOCUMENT 				= 
 			"select d, l, a from Document d left outer join fetch d.localisation l left outer join fetch d.auteur a where d.cote=?";

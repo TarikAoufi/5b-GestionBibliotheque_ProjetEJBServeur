@@ -5,7 +5,7 @@ import java.util.List;
 import fr.aoufi.entity.Auteur;
 import fr.aoufi.entity.Document;
 import fr.aoufi.entity.Localisation;
-import fr.aoufi.entity.ThemeDoc;
+import fr.aoufi.entity.Theme;
 
 public interface IServiceFacade {
 
@@ -56,13 +56,13 @@ public interface IServiceFacade {
 	/* ==========================================  
 	 * 			GESTION THEME
 	 * ========================================== */	
-	public ThemeDoc add(ThemeDoc theme) 		throws UserException;
-	public ThemeDoc update (ThemeDoc theme);	
-	public void remove(ThemeDoc theme) 			throws UserException;
+	public Theme add(Theme theme) 		throws UserException;
+	public Theme update (Theme theme);	
+	public void remove(Theme theme) 			throws UserException;
 	public void removeThemeById(String id) 		throws UserException;
 	public void removeTheme();
 	public void removeThemeNative();
-	public ThemeDoc getTheme(String id) 		throws UserException;
+	public Theme getTheme(String id) 		throws UserException;
 
 		
 	/* ==========================================  
@@ -70,13 +70,13 @@ public interface IServiceFacade {
 	 * ========================================== */	
 	public List<Document> 		getAllDocumentByCote();
 	public List<Document> 		getAllDocumentByTitre();
-	public List<Document> 		getAllDocumentByTheme(ThemeDoc theme);
+	public List<Document> 		getAllDocumentByTheme(Theme theme);
 	public List<Localisation> 	getAllLocalisationById();
 	public List<Localisation> 	getAllLocalisationByLieu();
 	public List<Auteur> 		getAllAuteurById();
 	public List<Auteur> 		getAllAuteurByNom();
-	public List<ThemeDoc> 			getAllThemeById();
-	public List<ThemeDoc> 			getAllThemeByNom();
-	public List<ThemeDoc> 			getAllThemeByDoc(Document document);
+	public List<Theme> 		getAllThemeById();
+	public List<Theme> 		getAllThemeByNom();
+	public List<Theme> 		getAllThemeByDoc(Document document);
 
 }

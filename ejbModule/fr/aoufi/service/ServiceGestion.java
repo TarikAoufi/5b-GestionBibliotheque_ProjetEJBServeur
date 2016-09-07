@@ -9,7 +9,7 @@ import fr.aoufi.dao.DaoFacade;
 import fr.aoufi.entity.Auteur;
 import fr.aoufi.entity.Document;
 import fr.aoufi.entity.Localisation;
-import fr.aoufi.entity.ThemeDoc;
+import fr.aoufi.entity.Theme;
 import fr.aoufi.ressources.Erreur;
 import fr.aoufi.userException.AuteurAffecteException;
 import fr.aoufi.userException.DoublonException;
@@ -287,7 +287,7 @@ public class ServiceGestion {
 		}
 	}
 
-	public ThemeDoc add(ThemeDoc theme) throws UserException {
+	public Theme add(Theme theme) throws UserException {
 		try {
 			return daoFacade.add(theme);
 		} catch (DoublonException e) {
@@ -299,11 +299,11 @@ public class ServiceGestion {
 		}
 	}
 
-	public ThemeDoc update(ThemeDoc theme) {
+	public Theme update(Theme theme) {
 		return daoFacade.update(theme);
 	}
 
-	public void remove(ThemeDoc theme) throws UserException {
+	public void remove(Theme theme) throws UserException {
 		try {
 			daoFacade.remove(theme);
 		} catch (InexistantException e) {
@@ -329,7 +329,7 @@ public class ServiceGestion {
 		daoFacade.removeThemeNative();
 	}
 
-	public ThemeDoc getTheme(String id) throws UserException {
+	public Theme getTheme(String id) throws UserException {
 		try {
 			return daoFacade.getTheme(id);
 		} catch (InexistantException e) {
