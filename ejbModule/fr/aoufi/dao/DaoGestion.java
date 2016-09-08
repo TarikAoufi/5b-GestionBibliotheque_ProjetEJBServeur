@@ -144,8 +144,8 @@ public class DaoGestion {
 	public Document update (Document document) throws LocalisationAffecteeException  {
 		System.out.println("*** DaoGestion - DEBUT - update(document) - document : " + document);
 			
-		Localisation 	localisation 		= null;
-		Auteur 			auteur 				= null;
+		Localisation localisation = null;
+		Auteur auteur = null;
 
 		// si document est null : return
 		if (document != null) {
@@ -170,7 +170,7 @@ public class DaoGestion {
 				auteur = update(auteur);
 				document.setAuteur(auteur);
 			}
-
+			
 			// tout va bien, on modifie le document
 			em.merge(document);
 			em.flush();
@@ -205,7 +205,6 @@ public class DaoGestion {
 				t = t.getCause();
 			}
 			if (t instanceof SQLIntegrityConstraintViolationException) {
-				// TODO
 			}
 		}
 	}
@@ -223,7 +222,7 @@ public class DaoGestion {
 
 	public void removeDocument() {
 		try {
-			//TODO pourquoi doit-on ajouter cela ???
+			// pourquoi doit-on ajouter cela ???
 			em.createNativeQuery("delete from user1." + Param.TABLE_DOC_THEME).executeUpdate();
 			em.createQuery("delete from Document").executeUpdate();
 		} catch (Exception e) {
@@ -234,7 +233,7 @@ public class DaoGestion {
 
 	public Document getDocument(String cote) throws InexistantException {
 
-		//		Pour éviter les pb de chargement du lazy loading, on force le chargement de la localisation par une requete HQL
+		//Pour éviter les pb de chargement du lazy loading, on force le chargement de la localisation par une requete HQL
 		Document document = null;
 		try { 
 			document 	= (Document) em.createQuery(ReqHQL.GET_DOCUMENT).setParameter(1,cote).getSingleResult();
@@ -249,7 +248,6 @@ public class DaoGestion {
 	/* ==========================================  
 	 * 			GESTION LOCALISATION
 	 * ========================================== */
-
 	/**
 	 * ajout de localisation
 	 * si elle existe deja on retourne l'objet du contexte 
