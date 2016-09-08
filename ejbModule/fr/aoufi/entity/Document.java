@@ -22,7 +22,7 @@ import fr.aoufi.ressources.Param;
  * bean metier
  * 
  *RG : on peut modifier l'auteur d'un livre (instance d'auteur) mais il ne faut pas
- *     modifier les données de l'auteur au travers du livre
+ *     modifier les donnÃ©es de l'auteur au travers du livre
  *     Il faut dans ce cas faire un merge de l'auteur
  *     
  *     la localisation peut etre modifiee a partir du livre
@@ -62,7 +62,7 @@ public class Document implements Serializable {
 	// docTheme (idTheme)    est cle etrangere sur id (Theme)
 	// RG : persist document : cascade theme
 	// RG : remove doc : pas de cascade
-	// RG : merge doc  : pas de cascade (le theme se modifie à part)
+	// RG : merge doc  : pas de cascade (le theme se modifie Ã  part)
 
 	// Document est le proprietaire de la relation document - theme
 	// Lorsqu'on supprime des documents, les lignes de la table d'association sont supprimees aussi
@@ -79,16 +79,16 @@ public class Document implements Serializable {
 	}
 
 	public Document(String cote, String titre) {
-		this.cote 				= cote;
-		this.titre 				= titre;
-		this.descriptif 		= "non renseigné";
-		this.nbExemplaireDispo 	= 0;
+		this.cote = cote;
+		this.titre = titre;
+		this.descriptif = "non renseignÃ©";
+		this.nbExemplaireDispo = 0;
 	}
 
 	public Document(String cote, String titre, String descriptif, int nbExemplaireDispo) {
 		this(cote,titre);
-		this.descriptif 		= descriptif;
-		this.nbExemplaireDispo 	= nbExemplaireDispo;
+		this.descriptif = descriptif;
+		this.nbExemplaireDispo = nbExemplaireDispo;
 	}
 
 	public Document(String cote, String titre, String descriptif, int nbExemplaireDispo, Localisation localisation) {
@@ -188,7 +188,7 @@ public class Document implements Serializable {
 	// utilise pout obtenir un data Transfert Object
 	// Neccessaire pour transformer un proxy (hibernate) en objet transiant (pas dans le contexte)
 	// lors de la communication avec l'application cliente
-	// sinon, hibernate gère les collections dans un type persistentBag propre a hibernate
+	// sinon, hibernate gÃ¨re les collections dans un type persistentBag propre a hibernate
 	// Pour eviter la propagation du persistentBag (ArrayList<Theme>) dans la couche cliente qui ne le connait pas
 	// Il faut le transformer en ArrayList
 	public Document getDto () {
@@ -222,7 +222,7 @@ public class Document implements Serializable {
 		
 		if (this.getAuteur() != null) docDto.setAuteur(this.getAuteur().getDto());
 		
-		// on met la liste des themes a vide pour éviter de tourner en rond
+		// on met la liste des themes a vide pour Ã©viter de tourner en rond
 		docDto.setThemes(new ArrayList<Theme>());
 		return docDto;
 	}
