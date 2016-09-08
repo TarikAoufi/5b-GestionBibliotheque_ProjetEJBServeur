@@ -58,5 +58,4 @@ public class ServiceListe {
 	public List<Theme> getAllThemeByDoc(Document document) {
 		return daoFacade.getAllThemeByDoc(document);
 	}
-
 }
