@@ -1,6 +1,6 @@
 package fr.aoufi.dao;
 
-public class ReqHQL {
+public class ReqHQL { 
 
 	// join fetch pour forcer le chargement de la localisation si elle existe (gestion comme eager)
 	protected static final String ALL_DOCUMENT_BY_COTE 		= 
