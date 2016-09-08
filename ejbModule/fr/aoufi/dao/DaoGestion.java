@@ -81,7 +81,7 @@ public class DaoGestion {
 			Localisation localisation = document.getLocalisation();
 			if (localisation != null) {
 				// on recherche si la localisation est deja affectee a un autre document
-				// si deja affectée, on sort
+				// si deja affectÃ©e, on sort
 				if (isAffecteLocalisation(localisation)) throw new LocalisationAffecteeException();
 				// on persist la localisation (si elle existe deja - la methode add(localisation) s'en occupe)
 				localisation = add(localisation);
@@ -103,14 +103,14 @@ public class DaoGestion {
 			if (document.getThemes()!= null)  {
 				// On recupere la liste des themes
 				// on ne peut pas directement travailler avec un iterator sur la collection car la methode add(theme) 
-				//  ajoute le theme à la fin de la collection et dans la boucle, il est re traité à la fin
+				//  ajoute le theme Ã  la fin de la collection et dans la boucle, il est re traitÃ© Ã  la fin
 				// on travaille donc sur la position des objets dans la liste
 				// de plus, avec un iterator sur l'ArrayList on a ConcurrentModificationException au moment de la modif
 				ArrayList<Theme> listeThemes = (ArrayList<Theme>) document.getThemes();
 				for (int i = 0; i < listeThemes.size(); i++) {
 					Theme theme = listeThemes.get(i);
 					Theme themex = em.find(Theme.class, theme.getId());	// on recupere le proxy correspondant
-					// si trouve on remplace à la meme position l'instance de theme par le proxy
+					// si trouve on remplace Ã  la meme position l'instance de theme par le proxy
 					// sinon on laisse la valeur presente, elle sera cree (CascadeType.Persist)
 					if (themex != null)  listeThemes.set(i,themex);				
 				}
@@ -138,7 +138,7 @@ public class DaoGestion {
 
 	/**
 	 * - on persist la localisation (si elle existe deja, cela ne fera rien)
-	 * - on verifie que la localisation n'est pas deja affectee à un autre document
+	 * - on verifie que la localisation n'est pas deja affectee Ã  un autre document
 	 * - on merge (persist si document pas existant)
 	 */
 	public Document update (Document document) throws LocalisationAffecteeException  {
@@ -154,7 +154,7 @@ public class DaoGestion {
 			if (isAffecteLocalisation(document)) throw new LocalisationAffecteeException();
 
 			// traitement de la localisation
-			// on update la localisation, si elle n'existe pas, update se charge de la créer
+			// on update la localisation, si elle n'existe pas, update se charge de la crÃ©er
 			// et on affecte l'objet du contexte (contenant l'id) au document
 			localisation = document.getLocalisation();
 			if (localisation != null) {
@@ -162,7 +162,7 @@ public class DaoGestion {
 			} 
 
 			// traitement de l'auteur
-			// on update l'auteur, si il n'existe pas, update se charge de le créer
+			// on update l'auteur, si il n'existe pas, update se charge de le crÃ©er
 			// retourne null si pas d'id
 			// on affecte l'objet du contexte  au document
 			auteur = document.getAuteur();
@@ -224,7 +224,7 @@ public class DaoGestion {
 	public void removeDocument() {
 		try {
 			//TODO pourquoi doit-on ajouter cela ???
-			em.createNativeQuery("delete from muller." + Param.TABLE_DOC_THEME).executeUpdate();
+			em.createNativeQuery("delete from user1." + Param.TABLE_DOC_THEME).executeUpdate();
 			em.createQuery("delete from Document").executeUpdate();
 		} catch (Exception e) {
 			System.err.println("*** Err DaoGestion : removeDocument");
@@ -234,7 +234,7 @@ public class DaoGestion {
 
 	public Document getDocument(String cote) throws InexistantException {
 
-		//		Pour éviter les pb de chargement du lazy loading, on force le chargement de la localisation par une requete HQL
+		//		Pour Ã©viter les pb de chargement du lazy loading, on force le chargement de la localisation par une requete HQL
 		Document document = null;
 		try { 
 			document 	= (Document) em.createQuery(ReqHQL.GET_DOCUMENT).setParameter(1,cote).getSingleResult();
@@ -286,7 +286,7 @@ public class DaoGestion {
 	/**
 	 * RG : 
 	 * 		
-	 *   si la localisation passée en paramètre possède un id != 0 alors on modifie
+	 *   si la localisation passÃ©e en paramÃ¨tre possÃ¨de un id != 0 alors on modifie
 	 *   sinon 2 cas
 	 *    si la localisation (meme lieu et emplacement) existe alors on la recupere
 	 *    sinon on la cree
@@ -494,7 +494,6 @@ public class DaoGestion {
 	/* ==========================================  
 	 * 			GESTION AUTEUR
 	 * ========================================== */
-
 	public Auteur add(Auteur auteur) throws DoublonException, IdException {
 
 		System.out.println("*** DaoGestion - DEBUT - add(auteur) : auteur : " + auteur);
@@ -581,7 +580,6 @@ public class DaoGestion {
 	/* ==========================================  
 	 * 			GESTION THEME
 	 * ========================================== */
-
 	public Theme add(Theme theme) throws DoublonException, IdException, LocalisationAffecteeException {
 		System.out.println("*** DaoGestion - DEBUT - add(theme) : theme : " + theme);
 
