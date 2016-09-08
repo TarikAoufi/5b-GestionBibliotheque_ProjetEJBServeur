@@ -29,9 +29,8 @@ import fr.aoufi.userException.LocalisationAffecteeException;
  * 		getAuteur   	java.util.Date remplace java.sql.date
  * 		add(Document document)
  * 		etc ...	
- * Elle sera utilisee par toutes les classes externes à la couche DAO
- * @author 
- *
+ * Elle sera utilisee par toutes les classes externes Ã  la couche DAO
+ * 
  */
 @Singleton
 @LocalBean
