@@ -279,5 +279,4 @@ public class ServiceFacade implements IServiceFacade {
 		return serviceListe.getAllThemeByDoc(document);
 	}
 
-
 }
