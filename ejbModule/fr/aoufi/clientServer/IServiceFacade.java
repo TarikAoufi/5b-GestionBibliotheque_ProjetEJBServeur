@@ -16,7 +16,7 @@ public interface IServiceFacade {
 	public Document				ajouter(Document document) 		throws UserException;
 	public Document 			update(Document document) 		throws UserException;
 	public void 				remove(Document document) 		throws UserException;
-	public void 				removeDocument(String cote) 	throws UserException;
+	public void 				removeDocument(String cote) 	        throws UserException;
 	public void 				removeDocumentNative();
 	public void 				removeDocument();
 	public Document 			getDocument(String cote) 		throws UserException;
@@ -25,18 +25,18 @@ public interface IServiceFacade {
 	/* ==========================================  
 	 * 			GESTION LOCALISATION
 	 * ========================================== */
-	public Localisation			ajouter(Localisation localisation) 				throws UserException;
-	public Localisation 		update(Localisation localisation) 				throws UserException;
-	public void 				remove(Localisation localisation) 				throws UserException;
-	public void 				removeLocalisation(int id) 						throws UserException;
-	public void 				removeLocalisationNative();
-	public void 				removeLocalisation();
+	public Localisation		ajouter(Localisation localisation) 			throws UserException;
+	public Localisation 		update(Localisation localisation) 			throws UserException;
+	public void 			remove(Localisation localisation) 			throws UserException;
+	public void 			removeLocalisation(int id) 			        throws UserException;
+	public void 			removeLocalisationNative();
+	public void 			removeLocalisation();
 	
-	public Localisation 		getLocalisation(int id) 						throws UserException;
+	public Localisation 		getLocalisation(int id) 				throws UserException;
 	public Localisation 		getLocalisation(String lieu, String emp) 		throws UserException;
 	public Localisation 		getLocalisation(Localisation localisation) 		throws UserException;
-	public Integer 				getLocalisationId(String lieu, String emp) 		throws UserException;
-	public Integer 				getLocalisationId(Localisation localisation) 	throws UserException;
+	public Integer 			getLocalisationId(String lieu, String emp) 		throws UserException;
+	public Integer 			getLocalisationId(Localisation localisation) 		throws UserException;
 
 	public boolean isAffecteLocalisation(Localisation localisation) ;
 	
@@ -46,19 +46,19 @@ public interface IServiceFacade {
 	 * ========================================== */
 	public Auteur ajouter(Auteur auteur) 		throws UserException;
 	public Auteur update (Auteur auteur);
-	public void remove(Auteur auteur) 			throws UserException;
+	public void remove(Auteur auteur) 		throws UserException;
 	public void removeAuteur(String id) 		throws UserException;
-	public void removeAuteur() 					throws UserException;
+	public void removeAuteur() 			throws UserException;
 	public void removeAuteurNative();
-	public Auteur getAuteur(String id) 			throws UserException;
+	public Auteur getAuteur(String id) 		throws UserException;
 	
 		
 	/* ==========================================  
 	 * 			GESTION THEME
 	 * ========================================== */	
-	public Theme add(Theme theme) 		throws UserException;
+	public Theme add(Theme theme) 			throws UserException;
 	public Theme update (Theme theme);	
-	public void remove(Theme theme) 			throws UserException;
+	public void remove(Theme theme) 		throws UserException;
 	public void removeThemeById(String id) 		throws UserException;
 	public void removeTheme();
 	public void removeThemeNative();
