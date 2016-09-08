@@ -20,8 +20,6 @@ import fr.aoufi.ressources.Param;
  * Les DTO sont construits dans la facade 
  * 
  * Tant qu'on ne sort pas de la couche dao, on garde le lien avec les entity du contexte
- * 
- * @author 
  *
  */
 @LocalBean
