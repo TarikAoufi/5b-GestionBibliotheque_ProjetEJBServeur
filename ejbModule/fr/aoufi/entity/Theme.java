@@ -38,7 +38,7 @@ public class Theme implements Serializable {
 	@ManyToMany( mappedBy = "themes", fetch=FetchType.LAZY)
 	private Collection<Document> documents = new ArrayList<Document>();
 
-	// avant remove : on parcourt la collection de documents et on enleve les themes à la main
+	// avant remove : on parcourt la collection de documents et on enleve les themes Ã  la main
 	@PreRemove
 	private void removeThemeFromDocument() {
 		if (documents != null) {
@@ -126,7 +126,7 @@ public class Theme implements Serializable {
 		return chaine;
 	}
 
-	// Voir classe Document pour les explications
+	// Voir classe Document pour les explications 
 	public Theme getDto () {
 
 		Theme themeDto = new Theme(this.getId(), this.getNom(), this.getDescription());
